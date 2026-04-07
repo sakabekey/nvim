@@ -30,6 +30,7 @@ vim.pack.add({
   "https://github.com/glidenote/memolist.vim.git",
   "https://github.com/mason-org/mason.nvim.git",
   "https://github.com/mason-org/mason-lspconfig.nvim.git",
+  "https://github.com/j-hui/fidget.nvim.git",
 })
 
 -- Theme
@@ -47,6 +48,7 @@ require("which-key").setup()
 require("blink.cmp").setup()
 require("mini.icons").setup()
 require("mini.statusline").setup()
+require("fidget").setup()
 require("telescope").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -79,6 +81,7 @@ vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope diagn
 vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Telescope resume" })
 vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = "Telescope old files" })
 vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Telescope commands" })
+vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Telescope buffers' })
 
 -- Misc keymap
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
