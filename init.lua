@@ -16,9 +16,14 @@ vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.clipboard = "unnamedplus"
 
+-- For nvim-tree plugin, see :help nvim-tree-netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Plugins
 vim.pack.add({
   { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+  "https://github.com/nvim-tree/nvim-web-devicons.git",
   "https://github.com/nvim-mini/mini.icons.git",
   "https://github.com/nvim-mini/mini.statusline.git",
   "https://github.com/neovim/nvim-lspconfig",
@@ -31,6 +36,7 @@ vim.pack.add({
   "https://github.com/mason-org/mason.nvim.git",
   "https://github.com/mason-org/mason-lspconfig.nvim.git",
   "https://github.com/j-hui/fidget.nvim.git",
+  "https://github.com/nvim-tree/nvim-tree.lua.git",
 })
 
 -- Theme
@@ -50,6 +56,7 @@ require("mini.icons").setup()
 require("mini.statusline").setup()
 require("fidget").setup()
 require("telescope").setup()
+require("nvim-tree").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
