@@ -37,6 +37,9 @@ vim.pack.add({
   "https://github.com/mason-org/mason-lspconfig.nvim.git",
   "https://github.com/j-hui/fidget.nvim.git",
   "https://github.com/nvim-tree/nvim-tree.lua.git",
+  "https://github.com/nvim-mini/mini.surround.git",
+  "https://github.com/nvim-mini/mini.align.git",
+  "https://github.com/lewis6991/gitsigns.nvim.git",
 })
 
 -- Theme
@@ -57,6 +60,8 @@ require("mini.statusline").setup()
 require("fidget").setup()
 require("telescope").setup()
 require("nvim-tree").setup()
+require("mini.surround").setup()
+require("mini.align").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
@@ -64,6 +69,14 @@ require("mason-lspconfig").setup({
 })
 
 -- LSP
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = { globals = { "vim" }, },
+      workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+    },
+  },
+})
 vim.lsp.enable(servers)
 
 -- Diagnostics
