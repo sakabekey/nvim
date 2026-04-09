@@ -40,6 +40,7 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.surround.git",
   "https://github.com/nvim-mini/mini.align.git",
   "https://github.com/lewis6991/gitsigns.nvim.git",
+  "https://github.com/nvim-mini/mini.pairs.git",
 })
 
 -- Theme
@@ -62,6 +63,7 @@ require("telescope").setup()
 require("nvim-tree").setup()
 require("mini.surround").setup()
 require("mini.align").setup()
+require("mini.pairs").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
