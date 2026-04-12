@@ -72,9 +72,11 @@ require("mason-lspconfig").setup({
   automatic_enable = servers,
 })
 require("telescope").setup({
-  defaults = {
-    path_display = { "relative" },
-  }
+  pickers = {
+    find_files = {
+      path_display = { "relative" },
+    },
+  },
 })
 
 -- LSP
