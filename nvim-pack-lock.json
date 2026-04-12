@@ -33,6 +33,10 @@
       "rev": "6f3c69cd57134ad8fbf1e85dcdc90cb37a8c75c8",
       "src": "https://github.com/nvim-mini/mini.align.git"
     },
+    "mini.cursorword": {
+      "rev": "a7e606208197ca5d1c5288750d5163429b4c74da",
+      "src": "https://github.com/nvim-mini/mini.cursorword.git"
+    },
     "mini.icons": {
       "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
       "src": "https://github.com/nvim-mini/mini.icons.git"

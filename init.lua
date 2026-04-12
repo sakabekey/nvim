@@ -41,6 +41,7 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.align.git",
   "https://github.com/lewis6991/gitsigns.nvim.git",
   "https://github.com/nvim-mini/mini.pairs.git",
+  "https://github.com/nvim-mini/mini.cursorword.git",
 })
 
 -- Theme
@@ -64,6 +65,7 @@ require("nvim-tree").setup()
 require("mini.surround").setup()
 require("mini.align").setup()
 require("mini.pairs").setup()
+require("mini.cursorword").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
