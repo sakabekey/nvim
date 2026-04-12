@@ -71,6 +71,11 @@ require("mason-lspconfig").setup({
   ensure_installed = servers,
   automatic_enable = servers,
 })
+require("telescope").setup({
+  defaults = {
+    path_display = { "relative" },
+  }
+})
 
 -- LSP
 vim.lsp.config("lua_ls", {
