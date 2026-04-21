@@ -60,7 +60,6 @@ require("blink.cmp").setup()
 require("mini.icons").setup()
 require("mini.statusline").setup()
 require("fidget").setup()
-require("telescope").setup()
 require("nvim-tree").setup()
 require("mini.surround").setup()
 require("mini.align").setup()
@@ -72,9 +71,15 @@ require("mason-lspconfig").setup({
   automatic_enable = servers,
 })
 require("telescope").setup({
+  defaults = {
+    preview = false,
+  },
   pickers = {
     find_files = {
       path_display = { "relative" },
+    },
+    buffers = {
+      path_display = { "smart" },
     },
   },
 })
