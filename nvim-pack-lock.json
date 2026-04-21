@@ -14,7 +14,7 @@
       "src": "https://github.com/j-hui/fidget.nvim.git"
     },
     "gitsigns.nvim": {
-      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
+      "rev": "6d808f99bd63303646794406e270bd553ad7792e",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
     },
     "mason-lspconfig.nvim": {
@@ -38,7 +38,7 @@
       "src": "https://github.com/nvim-mini/mini.cursorword.git"
     },
     "mini.icons": {
-      "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
+      "rev": "bac6317300e205335df425296570d84322730067",
       "src": "https://github.com/nvim-mini/mini.icons.git"
     },
     "mini.pairs": {
@@ -54,11 +54,11 @@
       "src": "https://github.com/nvim-mini/mini.surround.git"
     },
     "nvim-lspconfig": {
-      "rev": "cb5bc0b2b35a6d513e3298d285db81453e791f4f",
+      "rev": "e05fb8c3bd61d909dacff24f77f23beb644daf54",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-tree.lua": {
-      "rev": "509962f21ab7289d8dcd28568af539be39a8c01e",
+      "rev": "d277467fc0d1d0e2bca88165a1de6b526f9f6fe8",
       "src": "https://github.com/nvim-tree/nvim-tree.lua.git"
     },
     "nvim-treesitter": {
@@ -82,7 +82,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim.git"
     },
     "telescope.nvim": {
-      "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
+      "rev": "028d9a0695a0cc4cfa893889f8c408ed7ccc8adc",
       "src": "https://github.com/nvim-telescope/telescope.nvim.git"
     },
     "which-key.nvim": {
