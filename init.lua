@@ -104,6 +104,10 @@ vim.diagnostic.config({
   },
 })
 
+-- memolist
+vim.g.memolist_memo_suffix = "md"
+vim.g.memolist_filename_date = "%Y%m%d_"
+
 -- Telescope keymap
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
