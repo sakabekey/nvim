@@ -43,7 +43,6 @@ vim.pack.add({
   "https://github.com/lewis6991/gitsigns.nvim.git",
   "https://github.com/nvim-mini/mini.pairs.git",
   "https://github.com/nvim-mini/mini.cursorword.git",
-  { src = 'https://github.com/mrcjkb/rustaceanvim', version = vim.version.range('^9') },
 })
 
 -- Theme
@@ -107,18 +106,6 @@ vim.lsp.config("lua_ls", {
     Lua = {
       diagnostics = { globals = { "vim" }, },
       workspace = { library = vim.api.nvim_get_runtime_file("", true), },
-    },
-  },
-})
-vim.lsp.config("rust_analyzer", {
-  settings = {
-    ["rust-analyzer"] = {
-      cargo = {
-        allFeatures = true,
-      },
-      check = {
-        command = "clippy",
-      },
     },
   },
 })
