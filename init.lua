@@ -24,7 +24,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.pack.add({
   { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
   "https://github.com/nvim-tree/nvim-web-devicons.git",
-  "https://github.com/nvim-mini/mini.icons.git",
   "https://github.com/nvim-mini/mini.statusline.git",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/folke/which-key.nvim.git",
@@ -57,7 +56,6 @@ local servers = {
 require("oil").setup()
 require("which-key").setup()
 require("blink.cmp").setup()
-require("mini.icons").setup()
 require("mini.statusline").setup()
 require("fidget").setup()
 require("nvim-tree").setup()
@@ -68,11 +66,10 @@ require("mini.cursorword").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
-  automatic_enable = servers,
 })
 require("telescope").setup({
   defaults = {
-    preview = false,
+    preview = { treesitter = false, },
   },
   pickers = {
     find_files = {
@@ -81,6 +78,14 @@ require("telescope").setup({
     buffers = {
       path_display = { "smart" },
     },
+  },
+})
+require("blink.cmp").setup({
+  keymap = {
+    preset = "default",
+  },
+  completion = {
+    documentation = { auto_show = true },
   },
 })
 
@@ -97,11 +102,22 @@ vim.lsp.enable(servers)
 
 -- Diagnostics
 vim.diagnostic.config({
-  virtual_lines = {
-    current_line = true,
-    prefix = "▎",
-    spacing = 4,
+  -- virtual_lines = {
+  --   current_line = true,
+  --   prefix = "▎",
+  --   spacing = 4,
+  -- },
+  virtual_text = {
+    spacing = 2,
+    prefix = "●",
   },
+})
+
+-- yank highlight
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 -- memolist
@@ -109,19 +125,50 @@ vim.g.memolist_memo_suffix = "md"
 vim.g.memolist_filename_date = "%Y%m%d_"
 
 -- Telescope keymap
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
-vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescope key maps" })
-vim.keymap.set("n", "<leader>fs", builtin.builtin, { desc = "Telescope builtin" })
-vim.keymap.set({ "n", "v" }, "<leader>fw", builtin.grep_string, { desc = "Telescope grep string" })
-vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope diagnostics" })
-vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Telescope resume" })
-vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = "Telescope old files" })
-vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Telescope commands" })
-vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Telescope buffers' })
+local telescope_builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, { desc = "Telescope help tags" })
+vim.keymap.set("n", "<leader>fk", telescope_builtin.keymaps, { desc = "Telescope key maps" })
+vim.keymap.set("n", "<leader>fs", telescope_builtin.builtin, { desc = "Telescope builtin" })
+vim.keymap.set({ "n", "v" }, "<leader>fw", telescope_builtin.grep_string, { desc = "Telescope grep string" })
+vim.keymap.set("n", "<leader>fd", telescope_builtin.diagnostics, { desc = "Telescope diagnostics" })
+vim.keymap.set("n", "<leader>fr", telescope_builtin.resume, { desc = "Telescope resume" })
+vim.keymap.set("n", "<leader>f.", telescope_builtin.oldfiles, { desc = "Telescope old files" })
+vim.keymap.set("n", "<leader>fc", telescope_builtin.commands, { desc = "Telescope commands" })
+vim.keymap.set('n', '<leader><leader>', telescope_builtin.buffers, { desc = 'Telescope buffers' })
+
+-- LSP keymap
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local map = function(lhs, rhs, desc)
+      vim.keymap.set("n", lhs, rhs, {
+        buffer = ev.buf,
+        desc = desc,
+      })
+    end
+    -- jump
+    map("gd", vim.lsp.buf.definition, "definition")
+    map("gD", vim.lsp.buf.declaration, "declaration")
+    map("gr", telescope_builtin.lsp_references, "references")
+    map("gi", telescope_builtin.lsp_implementations, "implementation")
+    map("gy", telescope_builtin.lsp_type_definitions, "type definition")
+    -- information
+    map("K", vim.lsp.buf.hover, "hover")
+    map("zK", vim.lsp.buf.signature_help, "signature")
+    -- edit
+    map("gR", vim.lsp.buf.rename, "rename")
+    map("ga", vim.lsp.buf.code_action, "code action")
+    -- diagnostics
+    map("[d", function() vim.diagnostic.jump({ count = -1 }) end, "prev diagnostic")
+    map("]d", function() vim.diagnostic.jump({ count = 1 }) end, "next diagnostic")
+    map("gl", vim.diagnostic.open_float, "line diagnostic")
+    map("gL", telescope_builtin.diagnostics, "diagnostics list")
+    -- Rust
+    map("gz", vim.lsp.buf.code_action, "rust action")
+  end,
+})
 
 -- Misc keymap
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
