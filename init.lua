@@ -14,6 +14,9 @@ vim.o.smartcase = true
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.clipboard = "unnamedplus"
+vim.o.termguicolors = true
+vim.o.signcolumn = "yes"
+vim.o.updatetime = 250
 
 -- For nvim-tree plugin, see :help nvim-tree-netrw
 vim.g.loaded_netrw = 1
@@ -40,6 +43,7 @@ vim.pack.add({
   "https://github.com/lewis6991/gitsigns.nvim.git",
   "https://github.com/nvim-mini/mini.pairs.git",
   "https://github.com/nvim-mini/mini.cursorword.git",
+  { src = 'https://github.com/mrcjkb/rustaceanvim', version = vim.version.range('^9') },
 })
 
 -- Theme
@@ -64,6 +68,11 @@ require("mini.cursorword").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
+  handlers = {
+    function(server)
+      require("lspconfig")[server].setup({})
+    end,
+  },
 })
 require("telescope").setup({
   defaults = {
@@ -96,7 +105,18 @@ vim.lsp.config("lua_ls", {
     },
   },
 })
-vim.lsp.enable(servers)
+vim.lsp.config("rust_analyzer", {
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+      },
+      check = {
+        command = "clippy",
+      },
+    },
+  },
+})
 
 -- Diagnostics
 vim.diagnostic.config({
@@ -170,4 +190,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Misc keymap
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", function() vim.cmd("nohlsearch") end)
