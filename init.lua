@@ -54,7 +54,6 @@ local servers = {
 -- Setup
 require("oil").setup()
 require("which-key").setup()
-require("blink.cmp").setup()
 require("mini.statusline").setup()
 require("fidget").setup()
 require("nvim-tree").setup()
