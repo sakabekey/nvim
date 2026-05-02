@@ -95,6 +95,11 @@ require("blink.cmp").setup({
     documentation = { auto_show = true },
   },
 })
+require("oil").setup({
+  view_options = {
+    show_hidden = true,
+  },
+})
 
 -- LSP
 vim.lsp.config("lua_ls", {
