@@ -18,11 +18,11 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
     },
     "mason-lspconfig.nvim": {
-      "rev": "0c2823e0418f3d9230ff8b201c976e84de1cb401",
+      "rev": "eaa34887d444cb002e1b165fac399ae4bbc771f7",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim.git"
     },
     "mason.nvim": {
-      "rev": "cb8445f8ce85d957416c106b780efd51c6298f89",
+      "rev": "e54f5bf5f12c560da31c17eee5b3e1bd369f3ff9",
       "src": "https://github.com/mason-org/mason.nvim.git"
     },
     "memolist.vim": {
@@ -30,31 +30,31 @@
       "src": "https://github.com/glidenote/memolist.vim.git"
     },
     "mini.align": {
-      "rev": "6f3c69cd57134ad8fbf1e85dcdc90cb37a8c75c8",
+      "rev": "c701192658ddac4e3b20956a964c2b03157b5e51",
       "src": "https://github.com/nvim-mini/mini.align.git"
     },
     "mini.cursorword": {
-      "rev": "a7e606208197ca5d1c5288750d5163429b4c74da",
+      "rev": "52eacb10266b8ce07c052e3c80a706d29eb74006",
       "src": "https://github.com/nvim-mini/mini.cursorword.git"
     },
     "mini.icons": {
-      "rev": "bac6317300e205335df425296570d84322730067",
+      "rev": "9c7b1b90b15bdd69c52f6e31889dbc9987c30ec4",
       "src": "https://github.com/nvim-mini/mini.icons.git"
     },
     "mini.pairs": {
-      "rev": "42387c7fe68fc0b6e95eaf37f1bb76e7bffaa0d9",
+      "rev": "30cf2f01c4aaa2033db67376b9924fa2442c05d6",
       "src": "https://github.com/nvim-mini/mini.pairs.git"
     },
     "mini.statusline": {
-      "rev": "b456bfe845e475e9cec065b7a9a1ef657ad2f41b",
+      "rev": "e9e5c147385e5e0310ab79162dd08d0465e96d83",
       "src": "https://github.com/nvim-mini/mini.statusline.git"
     },
     "mini.surround": {
-      "rev": "2715e04bea3ec9244f15b421dc5b18c0fe326210",
+      "rev": "990ce30f724d08e79670107de6b915a3f1bb9a9b",
       "src": "https://github.com/nvim-mini/mini.surround.git"
     },
     "nvim-lspconfig": {
-      "rev": "31026a13eefb20681124706a79fc1df6bf11ab27",
+      "rev": "75e49cfa588a89ca667d767c0afef3ceac205faa",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-tree.lua": {
@@ -66,11 +66,11 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter.git"
     },
     "nvim-treesitter-context": {
-      "rev": "b0c45cefe2c8f7b55fc46f34e563bc428ef99636",
+      "rev": "b311b30818951d01f7b4bf650521b868b3fece16",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context.git"
     },
     "nvim-web-devicons": {
-      "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
+      "rev": "2795c26c916bb3c57dde308b82be51971fa92747",
       "src": "https://github.com/nvim-tree/nvim-web-devicons.git"
     },
     "oil.nvim": {
@@ -82,12 +82,12 @@
       "src": "https://github.com/nvim-lua/plenary.nvim.git"
     },
     "rustaceanvim": {
-      "rev": "bc391bbb8db0dbf3e3e9fe8f9f03112ecbab7463",
+      "rev": "a60811ae6054ba981cb4693aaecd715dea783327",
       "src": "https://github.com/mrcjkb/rustaceanvim",
       "version": "9.0.0 - 10.0.0"
     },
     "telescope.nvim": {
-      "rev": "506338434fec5ad19cb1f8d45bf92d66c4917393",
+      "rev": "f04ab730b8f9c6bf3f54a206d0dcddfd70c52d59",
       "src": "https://github.com/nvim-telescope/telescope.nvim.git"
     },
     "which-key.nvim": {
