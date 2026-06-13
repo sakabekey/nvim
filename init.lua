@@ -161,7 +161,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- jump
     map("gd", vim.lsp.buf.definition, "definition")
     map("gD", vim.lsp.buf.declaration, "declaration")
-    map("gr", telescope_builtin.lsp_references, "references")
+    map("gr", function()
+      telescope_builtin.lsp_references({
+        path_display = function(_, path)
+          return vim.fn.fnamemodify(path, ":.")
+        end,
+      })
+    end, "references")
     map("gi", telescope_builtin.lsp_implementations, "implementation")
     map("gy", telescope_builtin.lsp_type_definitions, "type definition")
     -- information
