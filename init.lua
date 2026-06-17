@@ -23,26 +23,43 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Plugins
-vim.pack.add({
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
-  "https://github.com/nvim-tree/nvim-web-devicons.git",
-  "https://github.com/nvim-mini/mini.statusline.git",
-  "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/folke/which-key.nvim.git",
-  { src = "https://github.com/Saghen/blink.cmp.git", version = "v1.10.2" },
-  "https://github.com/stevearc/oil.nvim.git",
-  "https://github.com/nvim-lua/plenary.nvim.git",
-  "https://github.com/nvim-telescope/telescope.nvim.git",
-  "https://github.com/glidenote/memolist.vim.git",
-  "https://github.com/mason-org/mason.nvim.git",
-  "https://github.com/mason-org/mason-lspconfig.nvim.git",
-  "https://github.com/j-hui/fidget.nvim.git",
-  "https://github.com/nvim-tree/nvim-tree.lua.git",
-  "https://github.com/nvim-mini/mini.surround.git",
-  "https://github.com/nvim-mini/mini.align.git",
-  "https://github.com/lewis6991/gitsigns.nvim.git",
-  "https://github.com/nvim-mini/mini.pairs.git",
-  "https://github.com/nvim-mini/mini.cursorword.git",
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "nvim-tree/nvim-web-devicons" },
+  { "nvim-mini/mini.statusline" },
+  { "neovim/nvim-lspconfig" },
+  { "folke/which-key.nvim" },
+  { "Saghen/blink.cmp", version = "v1.10.2" },
+  { "stevearc/oil.nvim" },
+  { "nvim-lua/plenary.nvim" },
+  { "nvim-telescope/telescope.nvim" },
+  { "glidenote/memolist.vim" },
+  { "mason-org/mason.nvim" },
+  { "mason-org/mason-lspconfig.nvim" },
+  { "j-hui/fidget.nvim" },
+  { "nvim-tree/nvim-tree.lua" },
+  { "nvim-mini/mini.surround" },
+  { "nvim-mini/mini.align" },
+  { "lewis6991/gitsigns.nvim" },
+  { "nvim-mini/mini.pairs" },
+  { "nvim-mini/mini.cursorword" },
+}, {
+  defaults = {
+    lazy = false,
+  },
 })
 
 -- Theme
