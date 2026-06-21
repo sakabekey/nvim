@@ -117,6 +117,7 @@ require("lazy").setup({
   },
   {
     "glidenote/memolist.vim",
+    lazy = false,
     init = function()
       vim.g.memolist_memo_suffix = "md"
       vim.g.memolist_filename_date = "%Y%m%d_"
