@@ -103,6 +103,10 @@ require("lazy").setup({
       require("telescope").setup({
         defaults = {
           preview = { treesitter = false },
+          layout_config = {
+            width = { padding = 0 },
+            height = { padding = 0 },
+          },
         },
         pickers = {
           find_files = {
