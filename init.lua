@@ -86,6 +86,7 @@ require("lazy").setup({
   {
     "stevearc/oil.nvim",
     cmd = "Oil",
+    lazy = false,
     config = function()
       require("oil").setup({
         view_options = {
