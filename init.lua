@@ -136,7 +136,7 @@ require("lazy").setup({
   },
   {
     "mason-org/mason-lspconfig.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
       require("mason-lspconfig").setup({
