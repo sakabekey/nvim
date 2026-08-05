@@ -183,7 +183,19 @@ require("lazy").setup({
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      require("gitsigns").setup()
+      require("gitsigns").setup({
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+          vim.keymap.set("n", "]h", gs.next_hunk, {
+            buffer = bufnr,
+            desc = "Next hunk",
+          })
+          vim.keymap.set("n", "[h", gs.prev_hunk, {
+            buffer = bufnr,
+            desc = "Previous hunk",
+          })
+        end,
+      })
     end,
   },
   {
